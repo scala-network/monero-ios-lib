@@ -100,7 +100,7 @@ cmake \
  -D IOS_DEPLOYMENT_TARGET=12.0 \
  ..
 
-make wallet_api -j${sysctl -n hw.physicalcpu}
+make wallet_api -j`sysctl -n hw.physicalcpu`
 
 if [[ -d $SOURCE_DIR/dist ]]; then
 	rm -rf $SOURCE_DIR/dist > /dev/null
