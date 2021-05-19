@@ -69,19 +69,24 @@ cd $SOURCE_DIR
 
 echo "============================ Monero ============================"
 git clone -b development $SCALA_URL $SCALA_DIR_PATH
-cd $MONERO_DIR_PATH
+
+cd $SCALA_DIR_PATH
 git submodule update --recursive --init
-rm -r build > /dev/null
-mkdir -p build/release
-pushd build/release
+
+if [[ -d build ]]; then
+	rm -rf build > /dev/null
+fi
+
+mkdir -p build
+pushd build
 cmake \
  -D CMAKE_BUILD_TYPE=release \
  -D BUILD_GUI_DEPS=ON \
  -D STATIC=ON \
  -D IOS=ON \
  -D ARCH=arm64 \
- -D BOOST_LIBRARYDIR=${BOOST_LIBRARYDIR} \
- -D BOOST_INCLUDEDIR=${BOOST_INCLUDEDIR} \
+ -D Boost_LIBRARY=${BOOST_LIBRARYDIR} \
+ -D Boost_INCLUDE_DIR=${BOOST_INCLUDEDIR} \
  -D OPENSSL_INCLUDE_DIR=${OPENSSL_INCLUDE_DIR} \
  -D OPENSSL_ROOT_DIR=${OPENSSL_ROOT_DIR} \
  -D INSTALL_VENDORED_LIBUNBOUND=ON \
@@ -92,5 +97,13 @@ cmake \
  -D MANUAL_SUBMODULES=1 \
  -D MONERUJO_HIDAPI=ON \
  -D USE_DEVICE_TREZOR=OFF \
- ../..
-make -j4
+ -D IOS_DEPLOYMENT_TARGET=12.0 \
+ ..
+
+make wallet_api -j${sysctl -n hw.physicalcpu}
+
+if [[ -d $SOURCE_DIR/dist ]]; then
+	rm -rf $SOURCE_DIR/dist > /dev/null
+fi
+
+cp -rf $SOURCE_DIR/scala/build/lib $SOURCE_DIR/dist
