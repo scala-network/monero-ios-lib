@@ -18,8 +18,8 @@ LMDB_DIR_PATH="lmdb/Sources"
 SODIUM_URL="https://github.com/jedisct1/libsodium --branch stable"
 SODIUM_PATH="$EXTERNAL_DIR_PATH/libsodium"
 
-MONERO_URL="https://github.com/WooKeyWallet/monero.git"
-MONERO_DIR_PATH="$SOURCE_DIR/monero"
+SCALA_URL="https://github.com/scala-network/scala.git"
+SCALA_DIR_PATH="$SOURCE_DIR/scala"
 
 BOOST_LIBRARYDIR="${BOOST_DIR_PATH}/build/ios/prefix/lib"
 BOOST_INCLUDEDIR="${BOOST_DIR_PATH}/build/ios/prefix/include"
@@ -30,7 +30,7 @@ OPENSSL_ROOT_DIR=$OPEN_SSL_DIR_PATH
 SODIUM_LIBRARY="${SODIUM_PATH}/libsodium-ios/lib/libsodium.a"
 SODIUM_INCLUDE="${SODIUM_PATH}/libsodium-ios/include"
 
-INSTALL_PREFIX="${SOURCE_DIR}/monero-libs"
+INSTALL_PREFIX="${SOURCE_DIR}/scala-libs"
 
 echo "Init external libs."
 mkdir -p $EXTERNAL_DIR_PATH
@@ -68,7 +68,7 @@ cd $SODIUM_PATH
 cd $SOURCE_DIR
 
 echo "============================ Monero ============================"
-git clone -b build-ios $MONERO_URL $MONERO_DIR_PATH
+git clone -b development $SCALA_URL $SCALA_DIR_PATH
 cd $MONERO_DIR_PATH
 git submodule update --recursive --init
 rm -r build > /dev/null
@@ -93,7 +93,4 @@ cmake \
  -D MONERUJO_HIDAPI=ON \
  -D USE_DEVICE_TREZOR=OFF \
  ../..
-make -j4 && make install
-
-echo "====================Copy librandomx.a to lib dir================="
-cp $SOURCE_DIR/monero/build/release/external/randomx/librandomx.a $SOURCE_DIR/monero-libs/lib-armv8-a/
+make -j4
