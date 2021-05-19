@@ -1,4 +1,4 @@
-# WooKey Wallet: For Privacy
+# Scala Lib Builder for IOS
 
 > Less Privacy Collection; More Privacy Coins; Fully Open Source; Better User Experience
 
@@ -67,13 +67,13 @@ $ cp /usr/include/netinet/{udp_var,ip_var}.h /usr/local/include/netinet
 
 ```bash
 $ git clone https://github.com/WooKeyWallet/monero-ios-lib.git
-$ cd ./monero-ios-lib
+$ cd ./scala-ios-lib-builder
 $ bash ./build.sh
 ```
 
-## Thanks
-
-Thanks to Bakhtiyor K. in Uzbekistan for helping us during the development process.
+## Thanks To:
+* WooKeyWallet for the fork
+* Bakhtiyor K. in Uzbekistan for helping us during the development process.
 
 ## Donating
 
