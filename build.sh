@@ -30,7 +30,7 @@ OPENSSL_ROOT_DIR=$OPEN_SSL_DIR_PATH
 SODIUM_LIBRARY="${SODIUM_PATH}/libsodium-ios/lib/libsodium.a"
 SODIUM_INCLUDE="${SODIUM_PATH}/libsodium-ios/include"
 
-INSTALL_PREFIX="${SOURCE_DIR}/scala-libs"
+INSTALL_PREFIX="${SOURCE_DIR}/dist"
 
 echo "Init external libs."
 mkdir -p $EXTERNAL_DIR_PATH
@@ -99,11 +99,11 @@ cmake \
  -D USE_DEVICE_TREZOR=OFF \
  -D IOS_DEPLOYMENT_TARGET=12.0 \
  ..
-
-make wallet_api -j`sysctl -n hw.physicalcpu`
-
+ 
 if [[ -d $SOURCE_DIR/dist ]]; then
 	rm -rf $SOURCE_DIR/dist > /dev/null
 fi
 
-cp -rf $SOURCE_DIR/scala/build/lib $SOURCE_DIR/dist
+make wallet_api -j`sysctl -n hw.physicalcpu` && make install
+
+cp $SCALA_DIR_PATH/build/external/randomx/librandomx.a $INSTALL_PREFIX/lib-armv8-a/
