@@ -76,8 +76,8 @@ $ bash ./build.sh
 * Bakhtiyor K. in Uzbekistan for helping us during the development process.
 
 ## Donating
-
-Donation Address (XMR): `4Fkrv8JZhhzftCWparEwqv8rnbys5tAXx2JoiZukyQhmXGWWxjbzaRe9MWEzYTrbeocj4abzKfA6GWWt8AkVY1fkcjqVXRUQhkaGLsPjsr`
+### Donation Address (XLA)
+@cryptoamity : `Ssy2HXpWZ9RhXbb9uNFTeHjaYfexa3suDbGJDSfUWSEpSajSmjQXwLh2xqCAAUQfZrdiRkvpUZvBceT8d6zKc6aV9NaZVYXFsY`
 
 ## License
 
