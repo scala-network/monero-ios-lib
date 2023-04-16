@@ -61,12 +61,12 @@ $ mkdir /usr/local/include/netinet
 $ cp /usr/include/netinet/{udp_var,ip_var}.h /usr/local/include/netinet
 ```
 
-### Build Monero
+### Build Scala
 
 #### Checkout
 
 ```bash
-$ git clone https://github.com/WooKeyWallet/monero-ios-lib.git
+$ git clone https://github.com/scala-network/scala-ios-lib.git
 $ cd ./scala-ios-lib-builder
 $ bash ./build.sh
 ```
